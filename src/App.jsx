@@ -21,7 +21,7 @@ export const App=() => {
       <Routes>
         <Route path="/" element={<ChessList />} />
         <Route path="/chess-create" element={<ChessCreate />} />
-        <Route path="/chess/:chess-id" element={<ChessSingle />} />
+        <Route path="/chess/:chessId" element={<ChessSingle />} />
       </Routes>
     </Router>
   );
