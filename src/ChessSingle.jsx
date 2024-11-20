@@ -10,10 +10,10 @@ export const ChessSingle = () =>{
     const [chess,setChess] = useState([]);
     const [isPending,setPending] = useState([]);
     useEffect(() => {
-        {(async () =>(
-            setPending(true);
+        {(async () =>{
+            setPending(true)
             try {
-                const response = await fetch('https://chess.sulla.hu/chess')
+                const response = await fetch(`https://chess.sulla.hu/chess/${id}`)
                 const result = await response.json();
                 setChess(result);
             } 
@@ -23,8 +23,10 @@ export const ChessSingle = () =>{
             finally{
                 setPending(false);
             }
-        ))}
-    });
+        
+        })();
+    }
+    },[]);
 
     return(
         <div>
@@ -35,7 +37,7 @@ export const ChessSingle = () =>{
                         <h5 className='card-title'>Sakkozó neve: {chess.name}</h5>
                         <div className='lead'>Születési év: {chess.birth_date}</div>
                         <div className='lead'> Nyert vb-k száma: {chess.world_ch_won}</div>
-                        <Link to={chess.profile_url ? chess.image_url : 'https://via.placeholder.com/150'} alt={chess.name} className='img-fluid'></Link>
+                        <Link to={chess.profile_url ? chess.image_url : 'https://via.placeholder.com/150'} alt={chess.name} className='img-fluid' style={{maxHeight:200}}></Link>
                     </div>
                 )}
         </div>
